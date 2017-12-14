@@ -10,7 +10,14 @@ app.use( cors() );
 
 massive(process.env.CONNECTION_STRING).then(db => {
     app.set('db', db)
+
+    // db.new_planes().then(planes => {console.log(planes)}).catch(err => console.error(err))
+    
+    db.get_planes().then(planes => {console.log(planes)}).catch(err => console.error(err))
+
 }).catch(err => console.error(err))
+
+
 
 const port = process.env.PORT || 3000
 app.listen( port , () => { console.log(`Server listening on port ${port}`); } );
